@@ -1906,7 +1906,7 @@ module "cert_manager" {
   set = concat([
     {
       name  = "installCRDs"
-      value = true
+      value = try(! var.cert_manager.skip_crds , true)
     },
     {
       name  = "serviceAccount.name"
